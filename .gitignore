@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Runtime Files
+*.pid
+*.state
+*.lock
+
+# Environment Variables
+.env
+.env.*
+
+# Certificates & Keys
+*.crt
+*.key
+*.pem
+
+# Temporary Files
+*.tmp
+*.bak
