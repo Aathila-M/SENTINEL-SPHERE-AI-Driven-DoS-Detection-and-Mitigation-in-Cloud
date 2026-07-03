@@ -1,0 +1,6 @@
+[root@kt10ap52 conf.d]# cat dos_enforce.on
+limit_conn conn_per_ip 20;
+limit_req zone=req_per_ip burst=20 nodelay;
+limit_conn_status 429;
+limit_req_status 429;
+[root@kt10ap52 conf.d]#
