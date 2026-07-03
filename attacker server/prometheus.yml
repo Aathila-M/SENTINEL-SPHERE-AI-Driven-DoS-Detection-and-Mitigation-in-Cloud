@@ -1,0 +1,42 @@
+[root@kt10ap51 prometheus]# cat prometheus.yml
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+# Include alerting rules
+rule_files:
+  - "/etc/prometheus/alerts/nginx.rules"
+
+scrape_configs:
+
+  # Prometheus self-monitoring
+  - job_name: "prometheus"
+    static_configs:
+      - targets:
+          - "localhost:9090"
+
+  # Node Exporter (Linux system metrics)
+  # Replace ATTACKER_SERVER_IP and TARGET_SERVER_IP
+  # with the IP addresses of your servers.
+
+  - job_name: "node_exporter"
+    static_configs:
+      - targets:
+          - "YOUR_ATTACKER_SERVER_IP:9100"
+        labels:
+          host: attacker-node
+
+      - targets:
+          - "YOUR_TARGET_SERVER_IP:9100"
+        labels:
+          host: defense-node
+
+  # NGINX Exporter (connections, requests, DOS visibility)
+  - job_name: "nginx_exporter"
+    static_configs:
+      - targets:
+          - "YOUR_TARGET_SERVER_IP:9113"
+        labels:
+          host: defense-node
+
+[root@kt10ap51 prometheus]#
